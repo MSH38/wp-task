@@ -7,15 +7,10 @@
                 <h2><?php the_title(); ?></h2>
                 <div class="entry">
                     <?php
-                    // Get the phone's brand and image
-                    $phone_brand = get_post_meta( get_the_ID(), '_phone_brand', true );
-                    $phone_brand_image = get_field('brand_image', 'brand_'.$phone_brand);
-                    
-                    // Display the phone's brand and image
-                    if ($phone_brand_image) {
-                        echo '<img src="' . esc_url($phone_brand_image) . '" alt="' . get_the_title($phone_brand) . '" />';
-                    }
-                    echo '<p>Brand: ' . get_the_title($phone_brand) . '</p>';
+                    $phone_brand_id = get_post_meta( get_the_ID(), '_phone_brand', true );
+                    $phone_brand = get_post( $phone_brand_id );
+                    $phone_release_date = get_post_meta( get_the_ID(), '_phone_release_date', true );
+                    echo '<p>Release Date: ' . $phone_release_date . '</p>';
                     ?>
                 </div>
             </div>
