@@ -9,42 +9,13 @@
 </head>
 <body>
     <header>
-        
-
-        <nav class="navbar navbar-expand-lg navbar-dark">
+       <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container-fluid">
                 <a class="navbar-brand " href="<?php echo esc_url( home_url( '/' ) ); ?>">Iphone Store</a>
-
-                <ul class="navbar-nav d-flex flex-row me-1">
-                    <!-- <?php   
-                        $pages_query = new WP_Query( array( 'post_type' => 'page' ) );
-                        if ( $pages_query->have_posts() ) {
-                            while ( $pages_query->have_posts() ) {
-                                $pages_query->the_post();
-                                ?>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                                </li>
-                                <?php
-                            }
-                            wp_reset_postdata();
-                        }
-                    ?> -->
-                    <li class="nav-item">
-                                    <a class="nav-link text-white" href="<?php the_permalink('/brands'); ?>"> Brands</a>
-                                </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false"> <i class="fas fa-user mx-1"></i> Profile </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li>
-                                <a class="dropdown-item" href="#">My account</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="<?php echo wp_logout_url( home_url() ); ?>">Log out</a>
-                            </li>
-                        </ul>
-                    </li>
+                <ul class="navbar-nav d-flex flex-row me-1 text-">
+                    <li><a class="nav-link text-white" href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a></li>
+                    <li><a class="nav-link text-white" href="<?php echo esc_url( home_url( '/about-us/' ) ); ?>">About Us</a></li>
+                    <li><a class="nav-link text-white" href="<?php echo esc_url( home_url( '/brands/' ) ); ?>">Brands</a></li>
                 </ul>
             </div>
         </nav>

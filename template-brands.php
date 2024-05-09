@@ -1,47 +1,38 @@
 <?php
 /*
-Template Name: Brands
+Template Name: Custom Template
 */
 get_header();
 ?>
 
-<div id="content" class="container">
-    <?php
-    // Get all brands
-    $brands = get_terms( array(
-        'taxonomy' => 'brand',
-        'hide_empty' => false,
-    ) );
-
-    // Loop through each brand
-    foreach ( $brands as $brand ) :
-        ?>
-        <div class="brand">
-            <h2><?php echo $brand->name; ?></h2>
-            <ul class="products">
+<div id="content">
+    <section id="main-content">
+        <div class="container">
+            <h1>Brands</h1>
+            <ul class="brand-list">
                 <?php
-                // Query products for the current brand
-                $products_query = new WP_Query( array(
-                    'post_type' => 'phone',
-                    'tax_query' => array(
-                        array(
-                            'taxonomy' => 'brand',
-                            'field' => 'slug',
-                            'terms' => $brand->slug,
-                        ),
-                    ),
-                ) );
+                // Get all brands
+                $brands = get_terms(array(
+                    'taxonomy' => 'brand',
+                    'hide_empty' => false,
+                ));
 
-                // Loop through products for the current brand
-                while ( $products_query->have_posts() ) : $products_query->the_post();
+                // Loop through each brand
+                foreach ($brands as $brand) :
                     ?>
-                    <li><?php the_title(); ?></li>
-                <?php endwhile; ?>
-                <?php wp_reset_postdata(); ?>
+                    <li>
+                        <h2><?php echo $brand->name; ?></h2>
+                        <?php
+                        // Display the description if available
+                        if (!empty($brand->description)) {
+                            echo '<p>' . $brand->description . '</p>';
+                        }
+                        ?>
+                    </li>
+                <?php endforeach; ?>
             </ul>
         </div>
-    <?php endforeach; ?>
+    </section>
 </div>
 
 <?php get_footer(); ?>
-
